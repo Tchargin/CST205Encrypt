@@ -19,7 +19,7 @@ class App(QMainWindow):
         self.left = 10
         self.top = 10
         self.width = 420
-        self.height = 300
+        self.height = 380
         self.initUI()
         QtLabelObj = QLabel(self)
         QtLabelObj.setText("Enter Message: ")
@@ -147,8 +147,11 @@ class App(QMainWindow):
             i=i+1
         msg=str(new)
 
-        QMessageBox.question(self, 'Message - pythonspot.com', "Your message is now encrypted to: " + msg, QMessageBox.Ok, QMessageBox.Ok)
+        QMessageBox.question(self, 'Encryption', "Your message is now encrypted to: " + msg, QMessageBox.Ok, QMessageBox.Ok)
+
+
         self.textbox.setText("")
+
 
 
         def encode_image(img, msg):
@@ -191,7 +194,7 @@ class App(QMainWindow):
                         index += 1
                 return msg
 
-        original_image_file = "Nothingtoseehere.png"
+        original_image_file = "Image.png"
         img = Image.open(original_image_file)
         print(img, img.mode)
         encoded_image_file = "enc_" + original_image_file
@@ -214,7 +217,7 @@ class App(QMainWindow):
         img2 = Image.open(encoded_image_file)
         hidden_text = decode_image(img2)
         print("Secret message: {}".format(hidden_text))
-        img_data= open('enc_Nothingtoseehere.png','rb').read()
+        img_data= open('enc_Image.png','rb').read()
 
         msg=MIMEMultipart()
 
@@ -230,9 +233,9 @@ class App(QMainWindow):
         myemail=emailSend
         recip = emailRecip
         server.login(myemail,mypwd)
-        image=MIMEImage(img_data,name=os.path.basename('enc_Nothingtoseehere.png'))
+        image=MIMEImage(img_data,name=os.path.basename('enc_Image.png'))
         msg.attach(image)
-        msg['Subject']='Elction3'
+        msg['Subject']='Election of 3'
         server.sendmail(myemail,recip,msg.as_string())
         server.quit()
 
