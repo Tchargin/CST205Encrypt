@@ -9,7 +9,7 @@ import os
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
-
+# GUI
 
 class App(QMainWindow):
 
@@ -84,6 +84,8 @@ class App(QMainWindow):
         textboxValue = self.textbox.text()
         emailRecip = self.textbox2.text()
         emailSend = self.textbox3.text()
+        
+        # Shift the message 3 letters
 
         new = list(textboxValue)
         i=0
@@ -152,7 +154,7 @@ class App(QMainWindow):
 
         self.textbox.setText("")
 
-
+        # Store the information in the picture
 
         def encode_image(img, msg):
                 length = len(msg)
@@ -193,6 +195,8 @@ class App(QMainWindow):
                             msg += chr(r)
                         index += 1
                 return msg
+            
+        # Get the original image file
 
         original_image_file = "Image.png"
         img = Image.open(original_image_file)
